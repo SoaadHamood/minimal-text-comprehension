@@ -1,140 +1,155 @@
-This project explores the relationship between brain activation patterns and semantic representations of words.
-The goal is to learn how neural activity recorded using fMRI can be mapped to semantic word vectors, enabling the prediction of the concept a person is thinking about based on brain signals.
+# Semantic Decoding of Brain Activation Using Word Embeddings
 
-The project demonstrates how distributional word embeddings can be used to decode semantic meaning from neural activation patterns.
+This project explores the relationship between **brain activation patterns and semantic representations of words**.  
+Using fMRI data and pretrained word embeddings, we train a model that attempts to **decode the semantic concept a person is thinking about based on brain activity**.
 
-Overview
+The project demonstrates how techniques from **Natural Language Processing (NLP)** can be applied to **computational neuroscience** to analyze semantic representations in the brain.
 
-Human brain activity encodes semantic information when we think about concepts such as animals, tools, or places.
-This project investigates whether it is possible to recover the semantic concept from brain activation data.
+---
 
-We use:
+# Project Overview
 
-fMRI activation patterns corresponding to 180 different concepts
+Humans represent concepts in the brain in complex ways.  
+In this project we attempt to decode these representations by mapping **fMRI activation patterns to semantic word vectors**.
 
-pretrained word embeddings representing semantic meaning
+The goal is to determine whether **semantic information encoded in brain activity aligns with distributional representations of language learned from text corpora**.
 
-machine learning models to decode semantic vectors from neural signals
+---
 
-The trained decoder learns a mapping:
+# Methodology
 
-Brain activation (fMRI) → Semantic vector → Concept
-Dataset
+The project follows several main steps:
+
+1. **Data Preparation**
 
 The dataset contains:
 
-fMRI brain activation patterns recorded for 180 concepts
+- fMRI activation patterns recorded while participants think about different concepts
+- A set of **180 semantic concepts**
 
-Each concept is associated with a semantic representation vector
+Each concept is associated with:
 
-Each sample consists of:
+- a **brain activation pattern**
+- a **semantic representation**
 
-Brain activation vector
-+
-Semantic embedding vector
+---
 
-The task is to learn a function that maps brain activation to its corresponding semantic representation.
+2. **Semantic Representation**
 
-Methodology
+Each concept is represented using **distributional word embeddings**, which encode semantic meaning as vectors in a high-dimensional space.
 
-The pipeline consists of several steps:
+These embeddings allow us to represent semantic similarity between concepts.
 
-1. Data Representation
+---
 
-Brain activation patterns are represented as high-dimensional vectors corresponding to voxel activations.
+3. **Mapping Brain Activity to Semantics**
 
-Concept meanings are represented using distributional word embeddings.
+A decoding model is trained to learn a mapping:
 
-2. Learning the Decoder
-
-A model is trained to learn the mapping:
 
 fMRI activation → semantic embedding
 
-The decoder attempts to reconstruct the semantic vector associated with a concept based on brain activation patterns.
 
-3. Concept Prediction
+The model attempts to predict the **semantic vector corresponding to the concept represented by the observed brain activity**.
 
-Given unseen brain activation data, the system:
+---
 
-Predicts the semantic embedding
+4. **Dimensionality Reduction**
 
-Finds the closest concept in the embedding space
+To analyze and visualize the structure of the data, dimensionality reduction techniques are applied:
 
-This allows the model to infer which concept produced the neural activity.
+- **PCA (Principal Component Analysis)**
+- **t-SNE**
 
-Visualization
+These methods allow us to explore how brain activation patterns cluster according to semantic relationships.
 
-To analyze the structure of the data and the learned representations, dimensionality reduction techniques are applied:
+---
 
-PCA (Principal Component Analysis)
+# Visualization
 
-t-SNE
+Dimensionality reduction techniques help reveal patterns in the data.
 
-These methods allow visualization of how brain activation patterns cluster according to semantic categories.
+Example goals of visualization:
 
-Technologies Used
+- Identify clusters of related concepts
+- Observe semantic structure in brain activation
+- Compare semantic and neural representations
 
-Programming Language:
+---
 
-Python
+# Technologies Used
 
-Libraries:
+### Programming Language
+- Python
 
-NumPy
+### Libraries
 
-pandas
+- NumPy  
+- Pandas  
+- scikit-learn  
+- matplotlib  
+- seaborn  
 
-scikit-learn
+### Techniques
 
-matplotlib
+- Word embeddings
+- Semantic vector representations
+- Dimensionality reduction (PCA, t-SNE)
+- Decoding models
 
-seaborn
+---
 
-Techniques:
+# Repository Structure
 
-Word embeddings
 
-Linear decoding models
-
-PCA
-
-t-SNE
-
-Semantic similarity analysis
-
-Example Pipeline
-fMRI Brain Activation
-        ↓
-Feature Representation
-        ↓
-Decoder Model
-        ↓
-Predicted Semantic Vector
-        ↓
-Nearest Concept in Embedding Space
-Project Structure
 minimal-text-comprehension
 │
-├── data
-│   ├── fmri_data
-│   └── semantic_vectors
-│
-├── notebooks
-│   └── unstructured_part_lastv.ipynb
+├── unstructured_part_lastv.ipynb # Main analysis notebook
+├── data/ # Brain activation and concept data
+├── utils/ # Helper functions
 │
 └── README.md
-Results
 
-The learned decoder demonstrates that semantic representations can be partially recovered from neural activation patterns, showing meaningful alignment between brain activity and distributional word embeddings.
 
-Visualization of the embedding space reveals clusters corresponding to related semantic concepts.
+---
 
-Author
+# Example Workflow
 
-Soaad Hamood
-B.Sc. Data and Information Engineering
+
+Brain Activation Data
+↓
+Preprocessing
+↓
+Semantic Word Embeddings
+↓
+Decoding Model
+↓
+Predicted Semantic Representation
+↓
+Dimensionality Reduction (PCA / t-SNE)
+↓
+Visualization of Semantic Structure
+
+
+---
+
+# Research Motivation
+
+Understanding how semantic concepts are represented in the brain is an important problem in:
+
+- Cognitive science
+- Neuroscience
+- Natural language processing
+
+By combining **neural data with language embeddings**, this project explores whether **distributional semantic representations align with neural representations of meaning**.
+
+---
+
+# Author
+
+**Soaad Hamood**  
+B.Sc. Data and Information Engineering  
 Technion – Israel Institute of Technology
 
-GitHub:
+GitHub:  
 https://github.com/SoaadHamood
